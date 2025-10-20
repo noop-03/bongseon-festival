@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    reactCompiler: true,
+  },
+  productionBrowserSourceMaps: true,
+  sentry: {
+    disableLogger: true,
+  },
 };
 
 export default nextConfig;

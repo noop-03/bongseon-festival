@@ -1,103 +1,108 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
+import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
+import { differenceInSeconds } from "date-fns";
+import { useEffect, useState } from "react";
+
+const FESTIVAL_TIME = new Date("2025-10-24T08:30:00+09:00");
+
+function useCountdown(target: Date) {
+  const [secondsLeft, setSecondsLeft] = useState(() =>
+    Math.max(0, differenceInSeconds(target, new Date()))
+  );
+
+  useEffect(() => {
+    let mounted = true;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    function tick() {
+      if (!mounted) return;
+      setSecondsLeft(Math.max(0, differenceInSeconds(target, new Date())));
+      const msToNextSecond = 1000 - (Date.now() % 1000);
+      timeoutId = setTimeout(tick, msToNextSecond);
+    }
+
+    // start aligned to the next full second
+    timeoutId = setTimeout(tick, 1000 - (Date.now() % 1000));
+    return () => {
+      mounted = false;
+      clearTimeout(timeoutId);
+    };
+  }, [target]);
+
+  const d = Math.floor(secondsLeft / (3600 * 24));
+  const h = Math.floor((secondsLeft % (3600 * 24)) / 3600);
+  const m = Math.floor((secondsLeft % 3600) / 60);
+  const s = secondsLeft % 60;
+  return { d, h, m, s };
+}
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { d, h, m, s } = useCountdown(FESTIVAL_TIME);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const cards = [
+    { title: "프로그램", href: "/program", desc: "1부 · 2부 · 3부 전 일정" },
+    { title: "E-Sports", href: "/esports", desc: "LOL, FIFA, Valorant" },
+    { title: "부스목록", href: "/booths", desc: "게임/먹거리 부스 안내" },
+    { title: "갤러리", href: "/gallery", desc: "실시간 사진과 영상" },
+    { title: "Q&A", href: "/qna", desc: "문의 질의 · 요청 남기기" },
+    { title: "관리자", href: "/admin", desc: "컨텐츠 운영 대시보드" },
+  ];
+
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-16">
+      <section className="text-center space-y-6">
+        <TypeAnimation
+          sequence={["청춘, 지금 여기서 빛나다!", 2000, "봉선의 메아리", 2000]}
+          wrapper="h1"
+          className="block text-3xl sm:text-5xl font-extrabold"
+          repeat={Infinity}
+        />
+        <p className="text-foreground/70">2025.10.24.(금) 08:30~16:30</p>
+
+        <div className="grid grid-flow-col auto-cols-max gap-4 justify-center text-center" aria-live="polite">
+          {[
+            { label: "일", value: d },
+            { label: "시간", value: h },
+            { label: "분", value: m },
+            { label: "초", value: s },
+          ].map((k) => (
+            <motion.div
+              key={k.label}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 120 }}
+              className="rounded-lg border border-foreground/10 px-4 py-3"
+              aria-label={`남은 ${k.label}: ${k.value}`}
+            >
+              <div className="text-3xl font-bold tabular-nums">{k.value}</div>
+              <div className="text-xs text-foreground/60">{k.label}</div>
+            </motion.div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-8 text-sm text-foreground/70"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          주최: 광주대동고등학교 학생회 • 축제준비위원회 · 후원: 총동창회
+        </motion.div>
+      </section>
+
+      <section className="mt-16 grid sm:grid-cols-3 gap-4">
+        {cards.map((c) => (
+          <Link key={c.href} href={c.href} className="block">
+            <motion.div whileHover={{ scale: 1.02 }} className="border rounded-lg p-4 hover:shadow-sm">
+              <div className="font-semibold">{c.title}</div>
+              <div className="text-sm text-foreground/70">{c.desc}</div>
+            </motion.div>
+          </Link>
+        ))}
+      </section>
     </div>
   );
 }
