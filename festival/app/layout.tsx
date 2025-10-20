@@ -14,28 +14,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "제48회 봉선의 메아리 | 광주대동고 축제",
+  title: "제48회 봉선의 메아리 | 광주대동고등학교 축제",
   description:
-    "학생과 교사가 함께하는 화합의 한마당 — 2025.10.24 08:30~16:30",
+    "학생과 교사가 함께 하는 화합의 한마당 — 2025.10.24 08:30~16:30",
   metadataBase: new URL("https://example.com"),
   openGraph: {
     title: "제48회 봉선의 메아리",
     description:
-      "학생과 교사가 함께하는 화합의 한마당 — 2025.10.24 08:30~16:30",
+      "학생과 교사가 함께 하는 화합의 한마당 — 2025.10.24 08:30~16:30",
     type: "website",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: Readonly<{  
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="ko">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>  
+        {/* Skip link for keyboard users */}
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-background focus:text-foreground px-3 py-2 rounded"
+        >
+          본문으로 건너뛰기
+        </a>
+
         <header className="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-foreground/10">
-          <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+          <nav
+            aria-label="주요 내비게이션"
+            className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between"
+          >
             <Link href="/" className="font-semibold">
               제48회 봉선의 메아리
             </Link>
@@ -52,7 +63,7 @@ export default function RootLayout({
               </li>
               <li>
                 <Link href="/booths" className="hover:underline">
-                  부스맵
+                  부스목록
                 </Link>
               </li>
               <li>
@@ -73,7 +84,9 @@ export default function RootLayout({
             </ul>
           </nav>
         </header>
-        <main>{children}</main>
+
+        <main id="content">{children}</main>
+
         <footer className="border-t border-foreground/10 mt-16">
           <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-foreground/70 flex items-center justify-between">
             <p>© 2025 광주대동고등학교 학생회 • 축제준비위원회</p>
