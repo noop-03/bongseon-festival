@@ -1,6 +1,7 @@
 import type { Config } from "jest";
 
 const config: Config = {
+  rootDir: "..",
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.(t|j)sx?$": [
@@ -12,8 +13,12 @@ const config: Config = {
       },
     ],
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom"],
+  setupFilesAfterEnv: ["<rootDir>/tests/setup-tests.ts"],
   moduleFileExtensions: ["ts", "tsx", "js"],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/$1",
+    "^next/(.*)$": "<rootDir>/node_modules/next/$1",
+  },
   testMatch: ["**/?(*.)+(spec|test).(ts|tsx)"]
 };
 

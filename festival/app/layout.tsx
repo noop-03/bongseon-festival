@@ -39,7 +39,7 @@ export default function RootLayout({
             <Link href="/" className="font-semibold">
               제48회 봉선의 메아리
             </Link>
-            <ul className="flex gap-4 text-sm">
+            <ul className="flex gap-4 text-sm items-center">
               <li>
                 <Link href="/program" className="hover:underline">
                   프로그램
@@ -53,6 +53,11 @@ export default function RootLayout({
               <li>
                 <Link href="/booths" className="hover:underline">
                   부스맵
+                </Link>
+              </li>
+              <li>
+                <Link href="/messages" className="hover:underline">
+                  모시는 글
                 </Link>
               </li>
               <li>
@@ -70,6 +75,7 @@ export default function RootLayout({
                   관리자
                 </Link>
               </li>
+              {/* 로그인 상태는 클라이언트 전용 컴포넌트이므로 별도 페이지에서 표시 */}
             </ul>
           </nav>
         </header>
