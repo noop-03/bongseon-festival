@@ -10,7 +10,7 @@
     "lint": "next lint",
     "test": "jest -c tests/jest.config.ts",
     "test:e2e": "playwright test",
-    "prepare": "playwright install --with-deps"
+    "prepare": ""
   },
   "dependencies": {
     "@sentry/nextjs": "^10.20.0",
