@@ -54,7 +54,7 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-4 py-16">
       <section className="text-center space-y-6">
         <TypeAnimation
-          sequence={["청춘, 지금 여기서 빛나다!", 2000, "봉선의 메아리", 2000]}
+          sequence={["青春, 지금 여기서 빛나다!", 2000, "봉선의 메아리", 2000]}
           wrapper="h1"
           className="block text-3xl sm:text-5xl font-extrabold"
           repeat={Infinity}
