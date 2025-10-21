@@ -81,6 +81,11 @@ export default function RootLayout({
                   관리자
                 </Link>
               </li>
+              <li>
+                <Link href="/login" className="hover:underline">
+                로그인
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
