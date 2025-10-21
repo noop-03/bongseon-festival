@@ -9,11 +9,16 @@ export default function ProgramPage() {
         <h2 className="text-xl font-semibold">PROGRAM 1 (08:30~12:30)</h2>
         <div className="space-y-2 text-sm leading-6">
           <p>
-            1) E-Sports(Electronic Sports): 비디오 게임을 통해 이루어지는 스포츠 (9:00~12:30)
+            1) E-Sports: 비디오 게임을 통해 이루어지는 스포츠
           </p>
           <p>
-            LOL 해설자: 2학년 4반 박진우, 2학년 7반 백진우 / FIFA 해설자: 1학년 1반 유주안, 1학년 2반 조원준 / Valorant 해설자: 미정
+            종목- 리그오브 레전드, 피파, 발로란트
           </p>
+          <p>
+            리그오브 레전드 해설자: 2학년 4반 박진우, 2학년 7반 백진우
+          </p>
+          <p>피파 해설자: 1학년 1반 유주안, 1학년 2반 조원준</p>
+          <p>발로란트 해설자: 1학년 3반 김현성, 1학년 3반 임건욱</p>
           <p>장소: 본교 시청각실</p>
           <p>2) 전시회: 교사 캐리커쳐 전시 (정용호, 최은성 선생님) — 본교 중앙 홀</p>
           <p>3) 반별 부스 운영: 1학년 2·7·8반, 2학년 1·2·3·6·8반, 학생회 팝콘 부스 — 운동장</p>
@@ -23,7 +28,7 @@ export default function ProgramPage() {
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">PROGRAM 2 (본 행사)</h2>
         <div className="space-y-2 text-sm leading-6">
-          <p>1부 사회자: 학생회장 나상혁</p>
+          <p>1부 사회: 학생회장 나상혁 </p>
           <ol className="list-decimal list-inside">
             <li>개식 선언</li>
             <li>국민의례</li>
@@ -32,26 +37,28 @@ export default function ProgramPage() {
             <li>총동창회장 축사</li>
             <li>축제선언</li>
           </ol>
-          <p>2부 사회자: 2학년 박태성, 1학년 윤현준</p>
+          <p>2부 사회: 2학년 박태성 | 1학년 윤현준 </p>
           <ol className="list-decimal list-inside">
             <li>태권도 초정공연</li>
             <li>글자 애니메이션 영상</li>
-            <li>악기 연주</li>
-            <li>교사 축하 공연</li>
-            <li>학교 행사 영상</li>
+            <li>악기 연주 (기타: 2학년 </li>
+            <li>교사 축하 공연 (손지훈, 정지영, 정회헌 선생님)</li>
+            <li>학교 행사 영상 (방송부)</li>
             <li>댄스 팀 선발 (상품: 야자 면제권)</li>
             <li>대동고 댄스(1학년 2팀, 2학년 2팀)</li>
           </ol>
           <p className="text-foreground/70">행운권 추첨 — 최은성 선생님</p>
-          <p>3부 사회자: 2학년 박한결, 1학년 정백진</p>
+          <p>3부 사회: 2학년 박한결 | 1학년 정백진</p>
           <ol className="list-decimal list-inside">
-            <li>축제 축하 영상</li>
+            <li>축제 축하 영상(광주시장, 서구청장, 졸업생 등)</li>
             <li>합창 (2학년 4반 박진우 외 22명)</li>
-            <li>미스 대동</li>
-            <li>스승과 제자</li>
-            <li>선생님 언박싱(Ask! 선생님)</li>
+            <li>미스 대동 (여장 남자들의 이야기)</li>
+            <li>스승과 제자 (김선춘 선생님, 2학년 하준원)</li>
+            <li>선생님 언박싱 (Ask! 선생님) - 사회 ㅣ 윤민주 선생님 </li>
             <li>여고 초청 공연</li>
-            <li>대동고 밴드부</li>
+            <li>대동고 밴드부 (
+              기타 : 이한석, 김영우, 전승빈 | 베이스 : 윤산희 | 건반 : 김태윤, 정현준 | 
+              드럼 : 서준하 | 보컬 : 김준수, 안효근, 하준원, 전유섭 )</li>
           </ol>
         </div>
       </section>
