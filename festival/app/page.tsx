@@ -42,8 +42,7 @@ export default function Home() {
   const { d, h, m, s } = useCountdown(FESTIVAL_TIME);
 
   const cards = [
-    { title: "프로그램", href: "/program", desc: "1부 · 2부 · 3부 전 일정" },
-    { title: "E-Sports", href: "/esports", desc: "LOL, FIFA, Valorant" },
+    { title: "프로그램", href: "/program", desc: "1부 · 2부 · 3부 전체 일정" },
     { title: "부스목록", href: "/booths", desc: "게임/먹거리 부스 안내" },
     { title: "갤러리", href: "/gallery", desc: "실시간 사진과 영상" },
     { title: "Q&A", href: "/qna", desc: "문의 질의 · 요청 남기기" },
@@ -54,7 +53,7 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-4 py-16">
       <section className="text-center space-y-6">
         <TypeAnimation
-          sequence={["青春, 지금 여기서 빛나다!", 2000, "봉선의 메아리", 2000]}
+          sequence={["青春, 지금 여기서 빛나다!", 2000, "제 48회 봉선의 메아리", 2000]}
           wrapper="h1"
           className="block text-3xl sm:text-5xl font-extrabold"
           repeat={Infinity}
@@ -89,7 +88,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="mt-8 text-sm text-foreground/70"
         >
-          주최: 광주대동고등학교 학생회 • 축제준비위원회 · 후원: 총동창회
+          주최: 광주대동고등학교 학생회 • 축제준비위원회 · 후원: 광주대동고등학교 총동창회
         </motion.div>
       </section>
 
