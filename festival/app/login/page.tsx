@@ -9,7 +9,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/`, // 로그인 후 리디렉션 경로임
+        redirectTo: "https://bongseon-festival.vercel.app/login", // 로그인 후 돌아올 URL
       },
     });
     if (error) alert("로그인 실패: " + error.message);
