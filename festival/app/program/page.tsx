@@ -1,67 +1,124 @@
+"use client";
+import { useState } from "react";
+
 export const dynamic = "force-static";
+
+function AccordionSection({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <section className="border border-border rounded-2xl shadow-sm bg-card overflow-hidden transition">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-5 py-4 text-left"
+      >
+        <h2 className="text-lg sm:text-xl font-semibold text-foreground">{title}</h2>
+        <span className="text-xl">{open ? "−" : "+"}</span>
+      </button>
+
+      <div
+        className={`px-5 pb-5 text-sm leading-relaxed transition-all duration-300 ${
+          open ? "max-h-[1500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        } sm:max-h-none sm:opacity-100`}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
 
 export default function ProgramPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 space-y-10">
-      <h1 className="text-2xl font-bold">프로그램</h1>
+    <div className="mx-auto max-w-3xl px-4 py-10 space-y-8 sm:space-y-10">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">대동고 축제 프로그램</h1>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">PROGRAM 1 (08:30~12:30)</h2>
-        <div className="space-y-2 text-sm leading-6">
-          <p>
-            1) E-Sports: 비디오 게임을 통해 이루어지는 스포츠
-          </p>
-          <p>
-            종목- 리그오브 레전드, 피파, 발로란트
-          </p>
-          <p>
-            리그오브 레전드 해설자: 2학년 4반 박진우, 2학년 7반 백진우
-          </p>
-          <p>피파 해설자: 1학년 1반 유주안, 1학년 2반 조원준</p>
-          <p>발로란트 해설자: 1학년 3반 김현성, 1학년 3반 임건욱</p>
-          <p>장소: 본교 시청각실</p>
-          <p>2) 전시회: 교사 캐리커쳐 전시 (정용호, 최은성 선생님) — 본교 중앙 홀</p>
-          <p>3) 반별 부스 운영: 1학년 2·7·8반, 2학년 1·2·3·6·8반, 학생회 팝콘 부스 — 운동장</p>
-        </div>
-      </section>
+      {/* PROGRAM 1 */}
+      <AccordionSection title="PROGRAM 1 (08:30 ~ 12:30)">
+        <div className="space-y-4 text-muted-foreground">
+          <div>
+            <h3 className="font-semibold text-base text-foreground">E-Sports</h3>
+            <p>비디오 게임을 통해 이루어지는 스포츠</p>
+            <p>종목 — 리그오브 레전드, 피파, 발로란트</p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>LOL 해설자: 2학년 4반 박진우, 2학년 7반 백진우</li>
+              <li>FIFA 해설자: 1학년 1반 유주안, 1학년 2반 조원준</li>
+              <li>Valorant 해설자: 1학년 3반 김현성, 1학년 3반 임건욱</li>
+            </ul>
+            <p className="mt-2">장소: 본교 시청각실</p>
+          </div>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">PROGRAM 2 (본 행사)</h2>
-        <div className="space-y-2 text-sm leading-6">
-          <p>1부 사회: 학생회장 나상혁 </p>
-          <ol className="list-decimal list-inside">
-            <li>개식 선언</li>
-            <li>국민의례</li>
-            <li>내빈소개 및 학교장 개회사 및 격려사</li>
-            <li>이사장 치사</li>
-            <li>총동창회장 축사</li>
-            <li>축제선언</li>
-          </ol>
-          <p>2부 사회: 2학년 박태성 | 1학년 윤현준 </p>
-          <ol className="list-decimal list-inside">
-            <li>태권도 초정공연</li>
-            <li>글자 애니메이션 영상</li>
-            <li>악기 연주 (기타: 2학년 </li>
-            <li>교사 축하 공연 (손지훈, 정지영, 정회헌 선생님)</li>
-            <li>학교 행사 영상 (방송부)</li>
-            <li>댄스 팀 선발 (상품: 야자 면제권)</li>
-            <li>대동고 댄스(1학년 2팀, 2학년 2팀)</li>
-          </ol>
-          <p className="text-foreground/70">행운권 추첨 — 최은성 선생님</p>
-          <p>3부 사회: 2학년 박한결 | 1학년 정백진</p>
-          <ol className="list-decimal list-inside">
-            <li>축제 축하 영상(광주시장, 서구청장, 졸업생 등)</li>
-            <li>합창 (2학년 4반 박진우 외 22명)</li>
-            <li>미스 대동 (여장 남자들의 이야기)</li>
-            <li>스승과 제자 (김선춘 선생님, 2학년 하준원)</li>
-            <li>선생님 언박싱 (Ask! 선생님) - 사회 ㅣ 윤민주 선생님 </li>
-            <li>여고 초청 공연</li>
-            <li>대동고 밴드부 (
-              기타 : 이한석, 김영우, 전승빈 | 베이스 : 윤산희 | 건반 : 김태윤, 정현준 | 
-              드럼 : 서준하 | 보컬 : 김준수, 안효근, 하준원, 전유섭 )</li>
-          </ol>
+          <div>
+            <h3 className="font-semibold text-base text-foreground">전시회</h3>
+            <p>교사 캐리커쳐 전시 (정용호, 최은성 선생님) — 본교 중앙 홀</p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-base text-foreground">반별 부스 운영</h3>
+            <p>
+              1학년 2·7·8반, 2학년 1·2·3·6·8반, 학생회 팝콘 부스 — 운동장
+            </p>
+          </div>
         </div>
-      </section>
+      </AccordionSection>
+
+      {/* PROGRAM 2 */}
+      <AccordionSection title="PROGRAM 2 (본 행사)">
+        <div className="space-y-6 text-muted-foreground">
+          {/* 1부 */}
+          <div>
+            <h3 className="font-semibold text-base text-foreground">
+              1부 사회: 학생회장 나상혁
+            </h3>
+            <ol className="list-decimal list-inside mt-2 space-y-1">
+              <li>개식 선언</li>
+              <li>국민의례</li>
+              <li>내빈소개 및 학교장 개회사 및 격려사</li>
+              <li>이사장 치사</li>
+              <li>총동창회장 축사</li>
+              <li>축제선언</li>
+            </ol>
+          </div>
+
+          {/* 2부 */}
+          <div>
+            <h3 className="font-semibold text-base text-foreground">
+              2부 사회: 2학년 박태성 | 1학년 윤현준
+            </h3>
+            <ol className="list-decimal list-inside mt-2 space-y-1">
+              <li>태권도 초정공연</li>
+              <li>글자 애니메이션 영상</li>
+              <li>악기 연주 (기타: 2학년 ...)</li>
+              <li>교사 축하 공연 (손지훈, 정지영, 정회헌 선생님)</li>
+              <li>학교 행사 영상 (방송부)</li>
+              <li>댄스 팀 선발 (상품: 야자 면제권)</li>
+              <li>대동고 댄스(1학년 2팀, 2학년 2팀)</li>
+            </ol>
+            <p className="text-foreground/70 mt-2">행운권 추첨 — 최은성 선생님</p>
+          </div>
+
+          {/* 3부 */}
+          <div>
+            <h3 className="font-semibold text-base text-foreground">
+              3부 사회: 2학년 박한결 | 1학년 정백진
+            </h3>
+            <ol className="list-decimal list-inside mt-2 space-y-1">
+              <li>축제 축하 영상 (광주시장, 서구청장, 졸업생 등)</li>
+              <li>합창 (2학년 4반 박진우 외 22명)</li>
+              <li>미스 대동 (여장 남자들의 이야기)</li>
+              <li>스승과 제자 (김선춘 선생님, 2학년 하준원)</li>
+              <li>선생님 언박싱 (Ask! 선생님) — 사회: 윤민주 선생님</li>
+              <li>여고 초청 공연</li>
+              <li>
+                대동고 밴드부 <br />
+                <span className="text-xs">
+                  기타: 이한석, 김영우, 전승빈 | 베이스: 윤산희 | 건반: 김태윤, 정현준 | 
+                  드럼: 서준하 | 보컬: 김준수, 안효근, 하준원, 전유섭
+                </span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </AccordionSection>
     </div>
   );
 }
