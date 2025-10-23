@@ -57,11 +57,6 @@ export default function RootLayout({
                 </Link>
               </li>
               <li>
-                <Link href="/esports" className="hover:underline">
-                  E-Sports
-                </Link>
-              </li>
-              <li>
                 <Link href="/booths" className="hover:underline">
                   부스목록
                 </Link>
