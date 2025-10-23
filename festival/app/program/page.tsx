@@ -1,50 +1,35 @@
-"use client";
-import { useState } from "react";
-
 export const dynamic = "force-static";
-
-function AccordionSection({ title, children }: { title: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <section className="border border-border rounded-2xl shadow-sm bg-card overflow-hidden transition">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center px-5 py-4 text-left"
-      >
-        <h2 className="text-lg sm:text-xl font-semibold text-foreground">{title}</h2>
-        <span className="text-xl">{open ? "−" : "+"}</span>
-      </button>
-
-      <div
-        className={`px-5 pb-5 text-sm leading-relaxed transition-all duration-300 ${
-          open ? "max-h-[1500px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-        } sm:max-h-none sm:opacity-100`}
-      >
-        {children}
-      </div>
-    </section>
-  );
-}
 
 export default function ProgramPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 space-y-8 sm:space-y-10">
-      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">대동고 축제 프로그램</h1>
+    <div className="mx-auto max-w-4xl px-5 sm:px-8 py-12 space-y-12">
+      {/* 메인 제목 */}
+      <header className="text-center space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          대동고 축제 프로그램
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          2025학년도 봉선의 메아리 축제 일정
+        </p>
+      </header>
 
       {/* PROGRAM 1 */}
-      <AccordionSection title="PROGRAM 1 (08:30 ~ 12:30)">
-        <div className="space-y-4 text-muted-foreground">
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold text-foreground border-b border-border pb-2">
+          PROGRAM 1 (08:30 ~ 12:30)
+        </h2>
+
+        <div className="space-y-5 text-[15px] leading-relaxed text-muted-foreground">
           <div>
             <h3 className="font-semibold text-base text-foreground">E-Sports</h3>
-            <p>비디오 게임을 통해 이루어지는 스포츠</p>
+            <p className="mt-1">비디오 게임을 통해 이루어지는 스포츠</p>
             <p>종목 — 리그오브 레전드, 피파, 발로란트</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>LOL 해설자: 2학년 4반 박진우, 2학년 7반 백진우</li>
               <li>FIFA 해설자: 1학년 1반 유주안, 1학년 2반 조원준</li>
               <li>Valorant 해설자: 1학년 3반 김현성, 1학년 3반 임건욱</li>
             </ul>
-            <p className="mt-2">장소: 본교 시청각실</p>
+            <p className="mt-2 text-sm text-foreground">장소: 본교 시청각실</p>
           </div>
 
           <div>
@@ -59,17 +44,21 @@ export default function ProgramPage() {
             </p>
           </div>
         </div>
-      </AccordionSection>
+      </section>
 
       {/* PROGRAM 2 */}
-      <AccordionSection title="PROGRAM 2 (본 행사)">
-        <div className="space-y-6 text-muted-foreground">
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold text-foreground border-b border-border pb-2">
+          PROGRAM 2 (본 행사)
+        </h2>
+
+        <div className="space-y-8 text-[15px] leading-relaxed text-muted-foreground">
           {/* 1부 */}
           <div>
-            <h3 className="font-semibold text-base text-foreground">
+            <h3 className="font-semibold text-base text-foreground mb-1">
               1부 사회: 학생회장 나상혁
             </h3>
-            <ol className="list-decimal list-inside mt-2 space-y-1">
+            <ol className="list-decimal list-inside space-y-1">
               <li>개식 선언</li>
               <li>국민의례</li>
               <li>내빈소개 및 학교장 개회사 및 격려사</li>
@@ -81,10 +70,10 @@ export default function ProgramPage() {
 
           {/* 2부 */}
           <div>
-            <h3 className="font-semibold text-base text-foreground">
+            <h3 className="font-semibold text-base text-foreground mb-1">
               2부 사회: 2학년 박태성 | 1학년 윤현준
             </h3>
-            <ol className="list-decimal list-inside mt-2 space-y-1">
+            <ol className="list-decimal list-inside space-y-1">
               <li>태권도 초정공연</li>
               <li>글자 애니메이션 영상</li>
               <li>악기 연주 (기타: 2학년 ...)</li>
@@ -93,15 +82,17 @@ export default function ProgramPage() {
               <li>댄스 팀 선발 (상품: 야자 면제권)</li>
               <li>대동고 댄스(1학년 2팀, 2학년 2팀)</li>
             </ol>
-            <p className="text-foreground/70 mt-2">행운권 추첨 — 최은성 선생님</p>
+            <p className="text-sm mt-2 text-foreground/70">
+              행운권 추첨 — 최은성 선생님
+            </p>
           </div>
 
           {/* 3부 */}
           <div>
-            <h3 className="font-semibold text-base text-foreground">
+            <h3 className="font-semibold text-base text-foreground mb-1">
               3부 사회: 2학년 박한결 | 1학년 정백진
             </h3>
-            <ol className="list-decimal list-inside mt-2 space-y-1">
+            <ol className="list-decimal list-inside space-y-1">
               <li>축제 축하 영상 (광주시장, 서구청장, 졸업생 등)</li>
               <li>합창 (2학년 4반 박진우 외 22명)</li>
               <li>미스 대동 (여장 남자들의 이야기)</li>
@@ -118,7 +109,7 @@ export default function ProgramPage() {
             </ol>
           </div>
         </div>
-      </AccordionSection>
+      </section>
     </div>
   );
 }
