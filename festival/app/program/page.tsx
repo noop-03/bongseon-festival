@@ -64,9 +64,9 @@ export default function ProgramPage() {
           <div>
             <p className="font-semibold mb-2">2부 사회: 2학년 박태성 | 1학년 윤현준</p>
             <ol className="list-decimal list-inside space-y-1">
-              <li>태권도 초정공연</li>
+              <li>태권도 초청공연</li>
               <li>글자 애니메이션 영상</li>
-              <li>악기 연주 (기타: 2학년)</li>
+              <li>악기 연주 (기타, 피아노노: 2학년)</li>
               <li>교사 축하 공연 (손지훈, 정지영, 정회헌 선생님)</li>
               <li>학교 행사 영상 (방송부)</li>
               <li>댄스 팀 선발 (상품: 야자 면제권)</li>
