@@ -1,6 +1,6 @@
 "use client";
 
-import { getBrowserClient } from "@/lib/browser-client";
+import { getBrowserClient } from "@/lib/supabase/browser-client";
 
 export default function LoginPage() {
   const supabase = getBrowserClient();
